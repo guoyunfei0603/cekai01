@@ -1,0 +1,74 @@
+2020-12-08 22:46:18,151 - [test01_register.py-->line:78] - INFO: --测试用例：正常注册--执行通过
+2020-12-08 22:46:18,302 - [test01_register.py-->line:78] - INFO: --测试用例：判断用户名是否注册--执行通过
+2020-12-08 22:46:18,446 - [test01_register.py-->line:78] - INFO: --测试用例：判断邮箱是否注册--执行通过
+2020-12-08 22:46:18,598 - [test01_register.py-->line:78] - INFO: --测试用例：用户名为空--执行通过
+2020-12-08 22:46:19,126 - [test01_register.py-->line:78] - INFO: --测试用例：用户名输入特殊字符--执行通过
+2020-12-08 22:46:19,278 - [test01_register.py-->line:78] - INFO: --测试用例：邮箱格式错误--执行通过
+2020-12-08 22:46:19,417 - [test01_register.py-->line:78] - INFO: --测试用例：邮箱为空--执行通过
+2020-12-08 22:46:19,970 - [test01_register.py-->line:78] - INFO: --测试用例：密码为空--执行通过
+2020-12-08 22:46:20,400 - [test01_register.py-->line:78] - INFO: --测试用例：密码5位--执行通过
+2020-12-08 22:46:20,540 - [test01_register.py-->line:78] - INFO: --测试用例：密码超过20位--执行通过
+2020-12-08 22:48:48,717 - [test01_register.py-->line:78] - INFO: --测试用例：正常注册--执行通过
+2020-12-08 22:48:48,852 - [test01_register.py-->line:78] - INFO: --测试用例：判断用户名是否注册--执行通过
+2020-12-08 22:48:49,010 - [test01_register.py-->line:78] - INFO: --测试用例：判断邮箱是否注册--执行通过
+2020-12-08 22:48:49,149 - [test01_register.py-->line:78] - INFO: --测试用例：用户名为空--执行通过
+2020-12-08 22:48:49,312 - [test01_register.py-->line:78] - INFO: --测试用例：用户名已注册--执行通过
+2020-12-08 22:48:49,461 - [test01_register.py-->line:78] - INFO: --测试用例：用户名输入特殊字符--执行通过
+2020-12-08 22:48:49,614 - [test01_register.py-->line:78] - INFO: --测试用例：邮箱格式错误--执行通过
+2020-12-08 22:48:49,762 - [test01_register.py-->line:78] - INFO: --测试用例：邮箱为空--执行通过
+2020-12-08 22:48:49,907 - [test01_register.py-->line:78] - INFO: --测试用例：邮箱已注册--执行通过
+2020-12-08 22:48:50,048 - [test01_register.py-->line:78] - INFO: --测试用例：密码为空--执行通过
+2020-12-08 22:48:50,187 - [test01_register.py-->line:78] - INFO: --测试用例：密码5位--执行通过
+2020-12-08 22:48:50,410 - [test01_register.py-->line:78] - INFO: --测试用例：密码超过20位--执行通过
+2020-12-08 22:48:50,703 - [test02_login.py-->line:48] - ERROR: {'username': ['已存在一位使用该名字的用户。'], 'email': ['此邮箱已注册']} items not in {'id': 113, 'username': 'yunfei001', 'token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMTMsInVzZXJuYW1lIjoieXVuZmVpMDAxIiwiZXhwIjoxNjA3NTI1MzI5LCJlbWFpbCI6IjEyMzEzMTMxMzIxMzFAcXEuY29tIn0.xxzuwKL7NU0uVkiRvwt030FdUzM5nZXg0xMCGuOEB_U'}
+Traceback (most recent call last):
+  File "D:\py31\git_code\py31_project\cekai_api1\testcase\test02_login.py", line 46, in test_login
+    assert_dict_item(expected, res)
+  File "D:\py31\git_code\py31_project\cekai_api1\tools\tools.py", line 20, in assert_dict_item
+    raise AssertionError("{} items not in {}".format(dic1, dic2))
+AssertionError: {'username': ['已存在一位使用该名字的用户。'], 'email': ['此邮箱已注册']} items not in {'id': 113, 'username': 'yunfei001', 'token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMTMsInVzZXJuYW1lIjoieXVuZmVpMDAxIiwiZXhwIjoxNjA3NTI1MzI5LCJlbWFpbCI6IjEyMzEzMTMxMzIxMzFAcXEuY29tIn0.xxzuwKL7NU0uVkiRvwt030FdUzM5nZXg0xMCGuOEB_U'}
+2020-12-08 22:48:50,703 - [test02_login.py-->line:49] - ERROR: --测试用例：注册一个用户--执行失败
+2020-12-08 22:48:50,973 - [test02_login.py-->line:52] - INFO: --测试用例：正常登录--执行通过
+2020-12-08 22:48:51,113 - [test02_login.py-->line:52] - INFO: --测试用例：用户名为空--执行通过
+2020-12-08 22:48:51,250 - [test02_login.py-->line:52] - INFO: --测试用例：密码为空--执行通过
+2020-12-08 22:48:51,381 - [test02_login.py-->line:52] - INFO: --测试用例：用户名和密码都为空--执行通过
+2020-12-08 22:48:51,660 - [test02_login.py-->line:52] - INFO: --测试用例：用户名不存在--执行通过
+2020-12-08 22:48:51,938 - [test02_login.py-->line:52] - INFO: --测试用例：密码错误--执行通过
+2020-12-08 22:48:52,373 - [test03_projects.py-->line:69] - INFO: --测试用例：正常创建项目--执行通过
+2020-12-08 22:48:52,551 - [test03_projects.py-->line:65] - ERROR: {'name': ['具有 项目名称 的 项目信息 已存在。']} items not in {'id': 66, 'create_time': '2020-12-08T22:48:51.761162+08:00', 'name': '这是一个伟大的项目3', 'leader': '江姐', 'tester': '水易寒', 'programmer': '童可', 'publish_app': '勤学app', 'desc': '勤能补拙'}
+Traceback (most recent call last):
+  File "D:\py31\git_code\py31_project\cekai_api1\testcase\test03_projects.py", line 63, in test_projects
+    assert_dict_item(expected, res)
+  File "D:\py31\git_code\py31_project\cekai_api1\tools\tools.py", line 20, in assert_dict_item
+    raise AssertionError("{} items not in {}".format(dic1, dic2))
+AssertionError: {'name': ['具有 项目名称 的 项目信息 已存在。']} items not in {'id': 66, 'create_time': '2020-12-08T22:48:51.761162+08:00', 'name': '这是一个伟大的项目3', 'leader': '江姐', 'tester': '水易寒', 'programmer': '童可', 'publish_app': '勤学app', 'desc': '勤能补拙'}
+2020-12-08 22:48:52,552 - [test03_projects.py-->line:66] - ERROR: --测试用例：项目名重复--执行失败
+2020-12-08 22:48:52,699 - [test03_projects.py-->line:69] - INFO: --测试用例：项目名称为空--执行通过
+2020-12-08 22:48:52,845 - [test03_projects.py-->line:69] - INFO: --测试用例：项目名称超过200字--执行通过
+2020-12-08 22:48:52,992 - [test03_projects.py-->line:69] - INFO: --测试用例：项目负责人为空--执行通过
+2020-12-08 22:48:53,144 - [test03_projects.py-->line:69] - INFO: --测试用例：项目测试人员为空--执行通过
+2020-12-08 22:48:53,282 - [test03_projects.py-->line:69] - INFO: --测试用例：开发人员为空--执行通过
+2020-12-08 22:48:53,426 - [test03_projects.py-->line:69] - INFO: --测试用例：发布应用为空--执行通过
+2020-12-08 22:48:53,566 - [test03_projects.py-->line:69] - INFO: --测试用例：项目负责人超过200字--执行通过
+2020-12-08 22:48:54,097 - [test04_interfaces.py-->line:40] - INFO: -----获取的项目id是：67------
+2020-12-08 22:48:54,254 - [test04_interfaces.py-->line:76] - INFO: --测试用例：正常创建接口--执行通过
+2020-12-08 22:48:54,400 - [test04_interfaces.py-->line:76] - INFO: --测试用例：接口名称为空--执行通过
+2020-12-08 22:48:54,564 - [test04_interfaces.py-->line:76] - INFO: --测试用例：测试人员为空--执行通过
+2020-12-08 22:48:54,711 - [test04_interfaces.py-->line:76] - INFO: --测试用例：所属项目id为空--执行通过
+2020-12-08 22:48:54,858 - [test04_interfaces.py-->line:76] - INFO: --测试用例：描述为空--执行通过
+2020-12-08 22:48:55,009 - [test04_interfaces.py-->line:76] - INFO: --测试用例：项目id不存在--执行通过
+2020-12-08 22:48:55,725 - [test05_testcases.py-->line:78] - INFO: --测试用例：正常创建用例--执行通过
+2020-12-08 22:48:55,877 - [test05_testcases.py-->line:78] - INFO: --测试用例：用例名称为空--执行通过
+2020-12-08 22:48:56,016 - [test05_testcases.py-->line:78] - INFO: --测试用例：项目和接口id为空--执行通过
+2020-12-08 22:48:56,188 - [test05_testcases.py-->line:78] - INFO: --测试用例：编写人员为空--执行通过
+2020-12-08 22:48:56,331 - [test05_testcases.py-->line:78] - INFO: --测试用例：请求信息为空--执行通过
+2020-12-08 22:48:56,478 - [test05_testcases.py-->line:78] - INFO: --测试用例：项目id不存在--执行通过
+2020-12-08 22:48:56,619 - [test05_testcases.py-->line:78] - INFO: --测试用例：项目id和接口id不一致--执行通过
+2020-12-08 22:48:56,774 - [test05_testcases.py-->line:74] - ERROR: {'name': ['具有 用例名称 的 用例信息 已存在。']} items not in {'id': 25, 'name': '勤学app用例2', 'interface': {'name': '注册接口_自动化测试平台项目', 'project': '自动化测试平台项目'}, 'author': '可优'}
+Traceback (most recent call last):
+  File "D:\py31\git_code\py31_project\cekai_api1\testcase\test05_testcases.py", line 72, in test_testcases
+    assert_dict_item(expected, res)
+  File "D:\py31\git_code\py31_project\cekai_api1\tools\tools.py", line 20, in assert_dict_item
+    raise AssertionError("{} items not in {}".format(dic1, dic2))
+AssertionError: {'name': ['具有 用例名称 的 用例信息 已存在。']} items not in {'id': 25, 'name': '勤学app用例2', 'interface': {'name': '注册接口_自动化测试平台项目', 'project': '自动化测试平台项目'}, 'author': '可优'}
+2020-12-08 22:48:56,775 - [test05_testcases.py-->line:75] - ERROR: --测试用例：用例名称重复--执行失败

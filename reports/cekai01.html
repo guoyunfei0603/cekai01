@@ -1,0 +1,1889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试报告</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <!--    页面样式-->
+    <style type="text/css">
+        /*标题样式*/
+        .title {
+            width: auto;
+            height: 60px;
+            text-align: center;
+            font: bolder 38px/60px "Microsoft YaHei UI";
+        }
+
+        /*汇总信息样式*/
+        .summary {
+            width: 90%;
+            position: absolute;
+            top: 120px;
+            margin-left: 5%;
+
+        }
+
+        .text-left {
+            font: bolder 20px/30px "Microsoft YaHei UI";
+        }
+
+        .left {
+            width: 50%;
+            float: left;
+
+        }
+
+        .right {
+            width: 50%;
+            float: right;
+
+        }
+
+        .desc {
+            float: left;
+            width: 100%;
+        }
+
+        .list-group-item span {
+            font: normal 16px/38px "Microsoft YaHei UI";
+            padding: 30px;
+
+        }
+
+        .list-group-item {
+            position: relative;
+            display: block;
+            padding: .4rem 1.25rem;
+            background-color: #fff;
+            border: 1px solid rgba(0, 0, 0, .125);
+        }
+
+        /* 执行信息样式   */
+        .test_info {
+            width: 90%;
+            position: absolute;
+            top: 900px;
+            margin-left: 5%;
+
+            color: #28a745 !important;
+        }
+
+        .table td, th {
+            border: solid 2px rgba(9, 122, 51, 0.11) !important;
+            padding: 0;
+            line-height: 40px;
+            text-align: center;
+
+        }
+
+
+        select {
+            border: 0;
+            padding: 0;
+            margin: 0;
+            height: 2em;
+            width: 8em;
+            margin-left: 2em;
+        }
+
+        option {
+            text-align: center;
+            height: 36px;
+            font: none 18px/36px "Microsoft YaHei UI";
+            color: #28a745 !important;
+        }
+
+        .test_log {
+            background: rgba(163, 171, 189, 0.15);
+            width: 100%;
+            height: 50px;
+            border-top: none;
+            border-bottom: none;
+            display: none;
+            text-align: left;
+        }
+
+        .test_log td {
+            text-align: left;
+            height: 30px;
+            margin: 0;
+            padding-left: 3em;
+            padding-right:3em;
+            font: none 18px/24px "Microsoft YaHei UI";
+            color: #9e141a;
+        }
+
+        pre {
+            margin: 0;
+            white-space: pre-wrap;
+            white-space: -moz-pre-wrap;
+            white-space: -o-pre-wrap;
+            word-wrap: break-word;
+        }
+
+        /*    测试图表显示*/
+        .char {
+            width: 90%;
+            position: absolute;
+            top: 450px;
+            margin-left: 5%;
+            color: #28a745 !important;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<!--报告标题-->
+<div class="title text-success">
+    <div class="shadow-lg p-3 mb-5 bg-white rounded">测开测试报告</div>
+</div>
+
+<!--汇总信息-->
+<div class="summary">
+    <p class="text-left text-success">测试结果汇总</p>
+    <div class="left">
+        <ul class="list-group">
+            <li class="list-group-item">
+                <button type="button" class="btn btn-success">测试人员</button>
+                <span class="text-dark">水易寒</span>
+            </li>
+            <li class="list-group-item">
+                <button type="button" class="btn btn-success">开始时间</button>
+                <span class="text-dark">2020-12-08 22:48:48</span>
+            </li>
+            <li class="list-group-item">
+                <button type="button" class="btn btn-success">执行时间</button>
+                <span class="text-dark">8.33 S</span>
+            </li>
+            <li class="list-group-item">
+                <button type="button" class="btn btn-success">用例总数</button>
+                <span class="text-dark">42</span>
+            </li>
+
+
+        </ul>
+    </div>
+    <div class="right">
+        <ul class="list-group">
+
+            <li class="list-group-item">
+                <button type="button" class="btn btn-success">成功用例</button>
+                <span class="text-success">39</span>
+            </li>
+            <li class="list-group-item">
+                <button type="button" class="btn btn-danger">失败用例</button>
+                <span class="text-warning">3</span>
+            </li>
+            <li class="list-group-item">
+                <button type="button" class="btn btn-warning">错误用例</button>
+                <span class="text-danger">0</span>
+            </li>
+            <li class="list-group-item">
+                <button type="button" class="btn btn-secondary">跳过用例</button>
+                <span class="text-secondary">0</span>
+            </li>
+        </ul>
+    </div>
+    <div class="desc">
+        <ul class="list-group">
+            <li class="list-group-item">
+                <button type="button" class="btn btn-success">描述信息</button>
+                <span class="text-secondary">水易寒执行测试生产的报告</span>
+            </li>
+        </ul>
+    </div>
+
+
+</div>
+
+<!--测试图表-->
+<div class="char">
+    <p class="text-left text-success">图表展示</p>
+    <div id="char2" style="width: 49%;height: 400px;float: left"></div>
+    <div id="char" style="width: 49%;height: 400px ;float: left"></div>
+</div>
+
+<!--详细信息-->
+<div class="test_info">
+
+    <p class="text-left text-success">详细信息</p>
+    <div class="table_data">
+
+        <table class="table">
+            <thead class="bg-success text-light">
+            <tr>
+                <th scope="col" style="width: 5%;padding: 0">编号</th>
+                <th scope="col" style="width: 20%;padding: 0">
+                    <span>测试类</span>
+                    <select id="testClass">
+                        <option>所有</option>
+                        
+                            <option>TestRegister</option>
+                        
+                            <option>TestLogin</option>
+                        
+                            <option>TestProjects</option>
+                        
+                            <option>TestInterfaces</option>
+                        
+                            <option>TestTestcases</option>
+                        
+                    </select>
+
+                </th>
+
+                <th scope="col" style="width: 15%;padding: 0">测试方法</th>
+                <th scope="col" style="width: 20%;padding: 0">用例描述</th>
+                <th scope="col" style="width: 10%;padding: 0">执行时间</th>
+                <th scope="col" style="width: 20%;padding: 0">
+
+                    <span>执行结果</span>
+                    <select id="testResult">
+                        <option>所有</option>
+                        <option class="text-success">成功</option>
+                        <option class="text-danger">失败</option>
+                        <option class="text-warning">错误</option>
+                        <option class="text-info">跳过</option>
+                    </select>
+
+                </th>
+                <th scope="col" style="width: 10%;padding: 0">详细信息</th>
+            </tr>
+            </thead>
+            <tbody>
+            
+                <tr>
+                    <td>1</td>
+                    <td class="TestRegister">TestRegister</td>
+                    <td>test_register_01</td>
+                    <td>正常注册</td>
+                    <td>0.27s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>-------当前执行的用例是:正常注册----------
+请求参数： {'username': '皮卡丘2443020', 'password': '123456', 'email': '3347764186@qq.com', 'password_confirm': '123456'}
+预期结果： {'username': '皮卡丘2443020'}
+实际结果： {'id': 112, 'username': '皮卡丘2443020', 'token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMTIsInVzZXJuYW1lIjoiXHU3NmFlXHU1MzYxXHU0ZTE4MjQ0MzAyMCIsImV4cCI6MTYwNzUyNTMyNywiZW1haWwiOiIzMzQ3NzY0MTg2QHFxLmNvbSJ9.llJn_NHpFwMAO2L6Z_KanqoId3Ak3u4k2ymC1902ItI'}
+===============执行结束===============
+
+test_register_01 (test01_register.TestRegister)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>2</td>
+                    <td class="TestRegister">TestRegister</td>
+                    <td>test_register_02</td>
+                    <td>判断用户名是否注册</td>
+                    <td>0.135s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>-------当前执行的用例是:判断用户名是否注册----------
+请求参数： {}
+预期结果： {'count': 1}
+实际结果： {'username': '皮卡丘2443020', 'count': 1}
+===============执行结束===============
+
+test_register_02 (test01_register.TestRegister)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>3</td>
+                    <td class="TestRegister">TestRegister</td>
+                    <td>test_register_03</td>
+                    <td>判断邮箱是否注册</td>
+                    <td>0.158s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>-------当前执行的用例是:判断邮箱是否注册----------
+请求参数： {}
+预期结果： {'count': 1}
+实际结果： {'email': '3347764186@qq.com', 'count': 1}
+===============执行结束===============
+
+test_register_03 (test01_register.TestRegister)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>4</td>
+                    <td class="TestRegister">TestRegister</td>
+                    <td>test_register_04</td>
+                    <td>用户名为空</td>
+                    <td>0.139s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>-------当前执行的用例是:用户名为空----------
+请求参数： {'password': '123456', 'email': '8526914115@qq.com', 'password_confirm': '123458'}
+预期结果： {'username': ['该字段是必填项。']}
+实际结果： {'username': ['该字段是必填项。']}
+===============执行结束===============
+
+test_register_04 (test01_register.TestRegister)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>5</td>
+                    <td class="TestRegister">TestRegister</td>
+                    <td>test_register_05</td>
+                    <td>用户名已注册</td>
+                    <td>0.164s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>-------当前执行的用例是:用户名已注册----------
+请求参数： {'username': 'yunfei02', 'password': '123456', 'email': '1359239137@qq.com', 'password_confirm': '123456'}
+预期结果： {'username': ['已存在一位使用该名字的用户。'], 'email': ['此邮箱已注册']}
+实际结果： {'username': ['已存在一位使用该名字的用户。'], 'email': ['此邮箱已注册']}
+===============执行结束===============
+
+test_register_05 (test01_register.TestRegister)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>6</td>
+                    <td class="TestRegister">TestRegister</td>
+                    <td>test_register_06</td>
+                    <td>用户名输入特殊字符</td>
+                    <td>0.149s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>-------当前执行的用例是:用户名输入特殊字符----------
+请求参数： {'username': '#userna%……&', 'password': '123456', 'email': '5564153028@qq.com', 'password_confirm': '123456'}
+预期结果： {'username': ['请输入合法用户名。只能包含字母，数字和@/./+/-/_ 字符。']}
+实际结果： {'username': ['请输入合法用户名。只能包含字母，数字和@/./+/-/_ 字符。']}
+===============执行结束===============
+
+test_register_06 (test01_register.TestRegister)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>7</td>
+                    <td class="TestRegister">TestRegister</td>
+                    <td>test_register_07</td>
+                    <td>邮箱格式错误</td>
+                    <td>0.154s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>-------当前执行的用例是:邮箱格式错误----------
+请求参数： {'username': 'yunfei03', 'password': '123456', 'email': '1359239107qq.com', 'password_confirm': '123456'}
+预期结果： {'email': ['请输入合法的邮件地址。']}
+实际结果： {'email': ['请输入合法的邮件地址。']}
+===============执行结束===============
+
+test_register_07 (test01_register.TestRegister)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>8</td>
+                    <td class="TestRegister">TestRegister</td>
+                    <td>test_register_08</td>
+                    <td>邮箱为空</td>
+                    <td>0.148s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>-------当前执行的用例是:邮箱为空----------
+请求参数： {'username': '皮卡丘909498', 'password': '123456', 'password_confirm': '123457'}
+预期结果： {'email': ['该字段是必填项。']}
+实际结果： {'email': ['该字段是必填项。']}
+===============执行结束===============
+
+test_register_08 (test01_register.TestRegister)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>9</td>
+                    <td class="TestRegister">TestRegister</td>
+                    <td>test_register_09</td>
+                    <td>邮箱已注册</td>
+                    <td>0.144s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>-------当前执行的用例是:邮箱已注册----------
+请求参数： {'username': 'yunfei05', 'password': '123456', 'email': '1359239107@qq.com', 'password_confirm': '123456'}
+预期结果： {'email': ['此邮箱已注册']}
+实际结果： {'username': ['已存在一位使用该名字的用户。'], 'email': ['此邮箱已注册']}
+===============执行结束===============
+
+test_register_09 (test01_register.TestRegister)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>10</td>
+                    <td class="TestRegister">TestRegister</td>
+                    <td>test_register_10</td>
+                    <td>密码为空</td>
+                    <td>0.142s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>-------当前执行的用例是:密码为空----------
+请求参数： {'username': '皮卡丘2540384', 'email': '1359239107@qq.com', 'password_confirm': '123459'}
+预期结果： {'password': ['该字段是必填项。']}
+实际结果： {'password': ['该字段是必填项。'], 'email': ['此邮箱已注册']}
+===============执行结束===============
+
+test_register_10 (test01_register.TestRegister)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>11</td>
+                    <td class="TestRegister">TestRegister</td>
+                    <td>test_register_11</td>
+                    <td>密码5位</td>
+                    <td>0.139s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>-------当前执行的用例是:密码5位----------
+请求参数： {'username': 'yunfei06', 'password': '12456', 'email': '7902626995@qq.com', 'password_confirm': '12456'}
+预期结果： {'password': ['仅允许6-20个字符的密码']}
+实际结果： {'password': ['仅允许6-20个字符的密码'], 'password_confirm': ['仅允许6~20个字符的确认密码']}
+===============执行结束===============
+
+test_register_11 (test01_register.TestRegister)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>12</td>
+                    <td class="TestRegister">TestRegister</td>
+                    <td>test_register_12</td>
+                    <td>密码超过20位</td>
+                    <td>0.223s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>-------当前执行的用例是:密码超过20位----------
+请求参数： {'username': 'yunfei02', 'password': '123233333333333334234444443456', 'email': '2286445134@qq.com', 'password_confirm': '123461'}
+预期结果： {'password': ['仅允许6-20个字符的密码']}
+实际结果： {'username': ['已存在一位使用该名字的用户。'], 'password': ['仅允许6-20个字符的密码']}
+===============执行结束===============
+
+test_register_12 (test01_register.TestRegister)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>13</td>
+                    <td class="TestLogin">TestLogin</td>
+                    <td>test_login_1</td>
+                    <td>注册一个用户</td>
+                    <td>0.294s</td>
+                    
+                        <td class="text-danger">失败</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>-------当前执行的用例是:注册一个用户----------
+请求参数： {'username': 'yunfei001', 'password': '123456', 'email': '1231313132131@qq.com', 'password_confirm': '123456'}
+预期结果： {'username': ['已存在一位使用该名字的用户。'], 'email': ['此邮箱已注册']}
+实际结果： {'id': 113, 'username': 'yunfei001', 'token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMTMsInVzZXJuYW1lIjoieXVuZmVpMDAxIiwiZXhwIjoxNjA3NTI1MzI5LCJlbWFpbCI6IjEyMzEzMTMxMzIxMzFAcXEuY29tIn0.xxzuwKL7NU0uVkiRvwt030FdUzM5nZXg0xMCGuOEB_U'}
+===============执行结束===============
+
+test_login_1 (test02_login.TestLogin)执行——>【失败】
+</pre>
+                        
+
+                            <pre>Traceback (most recent call last):
+</pre>
+                        
+
+                            <pre>  File "D:\TestSoftware\python3.7.0\lib\unittest\case.py", line 59, in testPartExecutor
+    yield
+</pre>
+                        
+
+                            <pre>  File "D:\TestSoftware\python3.7.0\lib\unittest\case.py", line 615, in run
+    testMethod()
+</pre>
+                        
+
+                            <pre>  File "D:\py31\git_code\py31_project\cekai_api1\common\myddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+</pre>
+                        
+
+                            <pre>  File "D:\py31\git_code\py31_project\cekai_api1\testcase\test02_login.py", line 50, in test_login
+    raise e
+</pre>
+                        
+
+                            <pre>  File "D:\py31\git_code\py31_project\cekai_api1\testcase\test02_login.py", line 46, in test_login
+    assert_dict_item(expected, res)
+</pre>
+                        
+
+                            <pre>  File "D:\py31\git_code\py31_project\cekai_api1\tools\tools.py", line 20, in assert_dict_item
+    raise AssertionError("{} items not in {}".format(dic1, dic2))
+</pre>
+                        
+
+                            <pre>AssertionError: {'username': ['已存在一位使用该名字的用户。'], 'email': ['此邮箱已注册']} items not in {'id': 113, 'username': 'yunfei001', 'token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMTMsInVzZXJuYW1lIjoieXVuZmVpMDAxIiwiZXhwIjoxNjA3NTI1MzI5LCJlbWFpbCI6IjEyMzEzMTMxMzIxMzFAcXEuY29tIn0.xxzuwKL7NU0uVkiRvwt030FdUzM5nZXg0xMCGuOEB_U'}
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>14</td>
+                    <td class="TestLogin">TestLogin</td>
+                    <td>test_login_2</td>
+                    <td>正常登录</td>
+                    <td>0.269s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>-------当前执行的用例是:正常登录----------
+请求参数： {'username': 'yunfei001', 'password': '123456'}
+预期结果： {'username': 'yunfei001'}
+实际结果： {'token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMTMsInVzZXJuYW1lIjoieXVuZmVpMDAxIiwiZXhwIjoxNjA3NTI1MzMwLCJlbWFpbCI6IjEyMzEzMTMxMzIxMzFAcXEuY29tIn0.zRr7-ffkkdq6s1Mz4sRcNwrhTJrgaocQukr5c5QuV1Q', 'user_id': 113, 'username': 'yunfei001'}
+===============执行结束===============
+
+test_login_2 (test02_login.TestLogin)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>15</td>
+                    <td class="TestLogin">TestLogin</td>
+                    <td>test_login_3</td>
+                    <td>用户名为空</td>
+                    <td>0.139s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>-------当前执行的用例是:用户名为空----------
+请求参数： {'password': '123456'}
+预期结果： {'username': ['该字段是必填项。']}
+实际结果： {'username': ['该字段是必填项。']}
+===============执行结束===============
+
+test_login_3 (test02_login.TestLogin)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>16</td>
+                    <td class="TestLogin">TestLogin</td>
+                    <td>test_login_4</td>
+                    <td>密码为空</td>
+                    <td>0.138s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>-------当前执行的用例是:密码为空----------
+请求参数： {'username': 'yunfei001'}
+预期结果： {'password': ['该字段是必填项。']}
+实际结果： {'password': ['该字段是必填项。']}
+===============执行结束===============
+
+test_login_4 (test02_login.TestLogin)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>17</td>
+                    <td class="TestLogin">TestLogin</td>
+                    <td>test_login_5</td>
+                    <td>用户名和密码都为空</td>
+                    <td>0.132s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>-------当前执行的用例是:用户名和密码都为空----------
+请求参数： {}
+预期结果： {'username': ['该字段是必填项。']}
+实际结果： {'username': ['该字段是必填项。'], 'password': ['该字段是必填项。']}
+===============执行结束===============
+
+test_login_5 (test02_login.TestLogin)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>18</td>
+                    <td class="TestLogin">TestLogin</td>
+                    <td>test_login_6</td>
+                    <td>用户名不存在</td>
+                    <td>0.278s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>-------当前执行的用例是:用户名不存在----------
+请求参数： {'username': 'yunfe221001', 'password': '123456'}
+预期结果： {'non_field_errors': ['无法使用提供的认证信息登录。']}
+实际结果： {'non_field_errors': ['无法使用提供的认证信息登录。']}
+===============执行结束===============
+
+test_login_6 (test02_login.TestLogin)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>19</td>
+                    <td class="TestLogin">TestLogin</td>
+                    <td>test_login_7</td>
+                    <td>密码错误</td>
+                    <td>0.278s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>-------当前执行的用例是:密码错误----------
+请求参数： {'username': 'yunfei001', 'password': '12322456'}
+预期结果： {'non_field_errors': ['无法使用提供的认证信息登录。']}
+实际结果： {'non_field_errors': ['无法使用提供的认证信息登录。']}
+===============执行结束===============
+
+test_login_7 (test02_login.TestLogin)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>20</td>
+                    <td class="TestProjects">TestProjects</td>
+                    <td>test_projects_1</td>
+                    <td>正常创建项目</td>
+                    <td>0.16s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>-------当前执行的用例是:正常创建项目----------
+请求参数： {'name': '皮卡丘1717648', 'leader': '江姐', 'tester': '水易寒', 'programmer': '童可', 'publish_app': '勤学app', 'desc': '勤能补拙'}
+预期结果： {'leader': '江姐', 'tester': '水易寒', 'programmer': '童可', 'publish_app': '勤学app'}
+实际结果： {'id': 65, 'create_time': '2020-12-08T22:48:51.592129+08:00', 'name': '皮卡丘1717648', 'leader': '江姐', 'tester': '水易寒', 'programmer': '童可', 'publish_app': '勤学app', 'desc': '勤能补拙'}
+===============执行结束===============
+
+test_projects_1 (test03_projects.TestProjects)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>21</td>
+                    <td class="TestProjects">TestProjects</td>
+                    <td>test_projects_2</td>
+                    <td>项目名重复</td>
+                    <td>0.179s</td>
+                    
+                        <td class="text-danger">失败</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>-------当前执行的用例是:项目名重复----------
+请求参数： {'name': '这是一个伟大的项目3', 'leader': '江姐', 'tester': '水易寒', 'programmer': '童可', 'publish_app': '勤学app', 'desc': '勤能补拙'}
+预期结果： {'name': ['具有 项目名称 的 项目信息 已存在。']}
+实际结果： {'id': 66, 'create_time': '2020-12-08T22:48:51.761162+08:00', 'name': '这是一个伟大的项目3', 'leader': '江姐', 'tester': '水易寒', 'programmer': '童可', 'publish_app': '勤学app', 'desc': '勤能补拙'}
+===============执行结束===============
+
+test_projects_2 (test03_projects.TestProjects)执行——>【失败】
+</pre>
+                        
+
+                            <pre>Traceback (most recent call last):
+</pre>
+                        
+
+                            <pre>  File "D:\TestSoftware\python3.7.0\lib\unittest\case.py", line 59, in testPartExecutor
+    yield
+</pre>
+                        
+
+                            <pre>  File "D:\TestSoftware\python3.7.0\lib\unittest\case.py", line 615, in run
+    testMethod()
+</pre>
+                        
+
+                            <pre>  File "D:\py31\git_code\py31_project\cekai_api1\common\myddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+</pre>
+                        
+
+                            <pre>  File "D:\py31\git_code\py31_project\cekai_api1\testcase\test03_projects.py", line 67, in test_projects
+    raise e
+</pre>
+                        
+
+                            <pre>  File "D:\py31\git_code\py31_project\cekai_api1\testcase\test03_projects.py", line 63, in test_projects
+    assert_dict_item(expected, res)
+</pre>
+                        
+
+                            <pre>  File "D:\py31\git_code\py31_project\cekai_api1\tools\tools.py", line 20, in assert_dict_item
+    raise AssertionError("{} items not in {}".format(dic1, dic2))
+</pre>
+                        
+
+                            <pre>AssertionError: {'name': ['具有 项目名称 的 项目信息 已存在。']} items not in {'id': 66, 'create_time': '2020-12-08T22:48:51.761162+08:00', 'name': '这是一个伟大的项目3', 'leader': '江姐', 'tester': '水易寒', 'programmer': '童可', 'publish_app': '勤学app', 'desc': '勤能补拙'}
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>22</td>
+                    <td class="TestProjects">TestProjects</td>
+                    <td>test_projects_3</td>
+                    <td>项目名称为空</td>
+                    <td>0.148s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>-------当前执行的用例是:项目名称为空----------
+请求参数： {'leader': '江姐', 'tester': '水易寒', 'programmer': '童可', 'publish_app': '勤学app', 'desc': '勤能补拙'}
+预期结果： {'name': ['该字段是必填项。']}
+实际结果： {'name': ['该字段是必填项。']}
+===============执行结束===============
+
+test_projects_3 (test03_projects.TestProjects)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>23</td>
+                    <td class="TestProjects">TestProjects</td>
+                    <td>test_projects_4</td>
+                    <td>项目名称超过200字</td>
+                    <td>0.147s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>-------当前执行的用例是:项目名称超过200字----------
+请求参数： {'name': '这是一个伟大的项目按时对奥或所度uuuuuuuuuuuuuuuh后端所所所所所所所所所所所所所所所所所所所所所所uashddddddddddddddddUI这是一个伟大的项目按时对奥或所度uuuuuuuuuuuuuuuh后端所所所所所所所所所所所所所所所所所所所所所所uashddddddddddddddddUI这是一个伟大的项目按时对奥或所度uuuuuuuuuuuuuuuh后端所所所所所所所所所所所所所所所所所所所所所所uashddddddddddddddddUI这是一个伟大的项目按时对奥或所度uuuuuuuuuuuuuuuh后端所所所所所所所所所所所所所所所所所所所所所所uashddddddddddddddddUI', 'leader': '江姐', 'tester': '水易寒', 'programmer': '童可', 'publish_app': '勤学app', 'desc': '勤能补拙'}
+预期结果： {'name': ['请确保这个字段不能超过 200 个字符。']}
+实际结果： {'name': ['请确保这个字段不能超过 200 个字符。']}
+===============执行结束===============
+
+test_projects_4 (test03_projects.TestProjects)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>24</td>
+                    <td class="TestProjects">TestProjects</td>
+                    <td>test_projects_5</td>
+                    <td>项目负责人为空</td>
+                    <td>0.146s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>-------当前执行的用例是:项目负责人为空----------
+请求参数： {'name': '这是一个伟大的项目', 'tester': '水易寒', 'programmer': '童可', 'publish_app': '勤学app', 'desc': '勤能补拙'}
+预期结果： {'leader': ['该字段是必填项。']}
+实际结果： {'leader': ['该字段是必填项。']}
+===============执行结束===============
+
+test_projects_5 (test03_projects.TestProjects)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>25</td>
+                    <td class="TestProjects">TestProjects</td>
+                    <td>test_projects_6</td>
+                    <td>项目测试人员为空</td>
+                    <td>0.153s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>-------当前执行的用例是:项目测试人员为空----------
+请求参数： {'name': '这是一个伟大的项目', 'leader': '江姐', 'programmer': '童可', 'publish_app': '勤学app', 'desc': '勤能补拙'}
+预期结果： {'tester': ['该字段是必填项。']}
+实际结果： {'tester': ['该字段是必填项。']}
+===============执行结束===============
+
+test_projects_6 (test03_projects.TestProjects)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>26</td>
+                    <td class="TestProjects">TestProjects</td>
+                    <td>test_projects_7</td>
+                    <td>开发人员为空</td>
+                    <td>0.138s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>-------当前执行的用例是:开发人员为空----------
+请求参数： {'name': '这是一个伟大的项目', 'leader': '江姐', 'tester': '水易寒', 'publish_app': '勤学app', 'desc': '勤能补拙'}
+预期结果： {'programmer': ['该字段是必填项。']}
+实际结果： {'programmer': ['该字段是必填项。']}
+===============执行结束===============
+
+test_projects_7 (test03_projects.TestProjects)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>27</td>
+                    <td class="TestProjects">TestProjects</td>
+                    <td>test_projects_8</td>
+                    <td>发布应用为空</td>
+                    <td>0.145s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>-------当前执行的用例是:发布应用为空----------
+请求参数： {'name': '这是一个伟大的项目', 'leader': '江姐', 'tester': '水易寒', 'programmer': '童可', 'desc': '勤能补拙'}
+预期结果： {'publish_app': ['该字段是必填项。']}
+实际结果： {'publish_app': ['该字段是必填项。']}
+===============执行结束===============
+
+test_projects_8 (test03_projects.TestProjects)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>28</td>
+                    <td class="TestProjects">TestProjects</td>
+                    <td>test_projects_9</td>
+                    <td>项目负责人超过200字</td>
+                    <td>0.14s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>-------当前执行的用例是:项目负责人超过200字----------
+请求参数： {'name': '皮卡丘6154325', 'leader': '江姐呀呀呀呀呀好想好想江姐，能不能并不能再见岁数大大家啊U盾画的画虎USA好短好短互等哈䖌个拉时间段就嗲时间滴啊上降低阿是江姐呀呀呀呀呀好想好想江姐，能不能并不能再见岁数大大家啊U盾画的画虎USA好短好短互等哈䖌个拉时间段就嗲时间滴啊上降低阿是江姐呀呀呀呀呀好想好想江姐，能不能并不能再见岁数大大家啊U盾画的画虎USA好短好短互等哈䖌个拉时间段就嗲时间滴啊上降低阿是江姐呀呀呀呀呀好想好想江姐，能不能并不能再见岁数大大家啊U盾画的画虎USA好短好短互等哈䖌个拉时间段就嗲时间滴啊上降低阿是', 'tester': '水易寒', 'programmer': '童可', 'publish_app': '勤学app', 'desc': '勤能补拙'}
+预期结果： {'leader': ['请确保这个字段不能超过 50 个字符。']}
+实际结果： {'leader': ['请确保这个字段不能超过 50 个字符。']}
+===============执行结束===============
+
+test_projects_9 (test03_projects.TestProjects)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>29</td>
+                    <td class="TestInterfaces">TestInterfaces</td>
+                    <td>test_interfaces_1</td>
+                    <td>正常创建接口</td>
+                    <td>0.157s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>-------当前执行的用例是:正常创建接口----------
+请求参数： {'name': '皮卡丘3398955', 'tester': '水易寒', 'project_id': '67', 'desc': '创建一个接口'}
+预期结果： {'tester': '水易寒'}
+实际结果： {'id': 39, 'name': '皮卡丘3398955', 'tester': '水易寒', 'project': '皮卡丘9604358', 'project_id': 67, 'desc': '创建一个接口', 'create_time': '2020-12-08T22:48:53.476226+08:00'}
+===============执行结束===============
+
+test_interfaces_1 (test04_interfaces.TestInterfaces)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>30</td>
+                    <td class="TestInterfaces">TestInterfaces</td>
+                    <td>test_interfaces_2</td>
+                    <td>接口名称为空</td>
+                    <td>0.148s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>-------当前执行的用例是:接口名称为空----------
+请求参数： {'tester': '水易寒', 'project_id': '67', 'desc': '这是一个描述'}
+预期结果： {'name': ['该字段是必填项。']}
+实际结果： {'name': ['该字段是必填项。']}
+===============执行结束===============
+
+test_interfaces_2 (test04_interfaces.TestInterfaces)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>31</td>
+                    <td class="TestInterfaces">TestInterfaces</td>
+                    <td>test_interfaces_3</td>
+                    <td>测试人员为空</td>
+                    <td>0.164s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>-------当前执行的用例是:测试人员为空----------
+请求参数： {'name': '皮卡丘1829719', 'project_id': '67', 'desc': '这是一个描述'}
+预期结果： {'tester': ['该字段是必填项。']}
+实际结果： {'tester': ['该字段是必填项。']}
+===============执行结束===============
+
+test_interfaces_3 (test04_interfaces.TestInterfaces)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>32</td>
+                    <td class="TestInterfaces">TestInterfaces</td>
+                    <td>test_interfaces_4</td>
+                    <td>所属项目id为空</td>
+                    <td>0.147s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>-------当前执行的用例是:所属项目id为空----------
+请求参数： {'name': '皮卡丘1045525', 'tester': '水易寒', 'desc': '这是一个描述'}
+预期结果： {'project_id': ['该字段是必填项。']}
+实际结果： {'project_id': ['该字段是必填项。']}
+===============执行结束===============
+
+test_interfaces_4 (test04_interfaces.TestInterfaces)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>33</td>
+                    <td class="TestInterfaces">TestInterfaces</td>
+                    <td>test_interfaces_5</td>
+                    <td>描述为空</td>
+                    <td>0.146s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>-------当前执行的用例是:描述为空----------
+请求参数： {'name': '皮卡丘866140', 'tester': '水易寒', 'project_id': '67'}
+预期结果： {'tester': '水易寒'}
+实际结果： {'id': 40, 'name': '皮卡丘866140', 'tester': '水易寒', 'project': '皮卡丘9604358', 'project_id': 67, 'desc': None, 'create_time': '2020-12-08T22:48:54.082869+08:00'}
+===============执行结束===============
+
+test_interfaces_5 (test04_interfaces.TestInterfaces)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>34</td>
+                    <td class="TestInterfaces">TestInterfaces</td>
+                    <td>test_interfaces_6</td>
+                    <td>项目id不存在</td>
+                    <td>0.152s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>-------当前执行的用例是:项目id不存在----------
+请求参数： {'name': '皮卡丘3901301', 'tester': '水易寒', 'project_id': 3732, 'desc': '这是一个描述'}
+预期结果： {'project_id': ['无效主键 “3732” － 对象不存在。']}
+实际结果： {'project_id': ['无效主键 “3732” － 对象不存在。']}
+===============执行结束===============
+
+test_interfaces_6 (test04_interfaces.TestInterfaces)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>35</td>
+                    <td class="TestTestcases">TestTestcases</td>
+                    <td>test_testcases_1</td>
+                    <td>正常创建用例</td>
+                    <td>0.163s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>-------当前执行的用例是:正常创建用例----------
+请求参数： {'name': '皮卡丘386050', 'interface': {'pid': '68', 'iid': '41'}, 'author': '可优', 'request': '测试请求数据'}
+预期结果： {'name': '皮卡丘386050'}
+实际结果： {'id': 24, 'name': '皮卡丘386050', 'interface': {'name': '皮卡丘6770480', 'project': '皮卡丘4291520'}, 'author': '可优'}
+===============执行结束===============
+
+test_testcases_1 (test05_testcases.TestTestcases)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>36</td>
+                    <td class="TestTestcases">TestTestcases</td>
+                    <td>test_testcases_2</td>
+                    <td>用例名称为空</td>
+                    <td>0.154s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>-------当前执行的用例是:用例名称为空----------
+请求参数： {'interface': {'pid': 1, 'iid': 2}, 'author': '可优', 'request': '测试请求数据'}
+预期结果： {'name': ['该字段是必填项。']}
+实际结果： {'name': ['该字段是必填项。']}
+===============执行结束===============
+
+test_testcases_2 (test05_testcases.TestTestcases)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>37</td>
+                    <td class="TestTestcases">TestTestcases</td>
+                    <td>test_testcases_3</td>
+                    <td>项目和接口id为空</td>
+                    <td>0.138s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>-------当前执行的用例是:项目和接口id为空----------
+请求参数： {'name': '勤学app用例2', 'author': '可优', 'request': '测试请求数据'}
+预期结果： {'interface': ['该字段是必填项。']}
+实际结果： {'interface': ['该字段是必填项。']}
+===============执行结束===============
+
+test_testcases_3 (test05_testcases.TestTestcases)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>38</td>
+                    <td class="TestTestcases">TestTestcases</td>
+                    <td>test_testcases_4</td>
+                    <td>编写人员为空</td>
+                    <td>0.172s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>-------当前执行的用例是:编写人员为空----------
+请求参数： {'name': '勤学app用例2', 'interface': {'pid': 1, 'iid': 2}, 'request': '测试请求数据'}
+预期结果： {'author': ['该字段是必填项。']}
+实际结果： {'author': ['该字段是必填项。']}
+===============执行结束===============
+
+test_testcases_4 (test05_testcases.TestTestcases)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>39</td>
+                    <td class="TestTestcases">TestTestcases</td>
+                    <td>test_testcases_5</td>
+                    <td>请求信息为空</td>
+                    <td>0.143s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>-------当前执行的用例是:请求信息为空----------
+请求参数： {'name': '勤学app用例2', 'interface': {'pid': 1, 'iid': 2}, 'author': '可优'}
+预期结果： {'request': ['该字段是必填项。']}
+实际结果： {'request': ['该字段是必填项。']}
+===============执行结束===============
+
+test_testcases_5 (test05_testcases.TestTestcases)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>40</td>
+                    <td class="TestTestcases">TestTestcases</td>
+                    <td>test_testcases_6</td>
+                    <td>项目id不存在</td>
+                    <td>0.147s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>-------当前执行的用例是:项目id不存在----------
+请求参数： {'name': '勤学app用例4', 'interface': {'pid': 100, 'iid': 2}, 'author': '可优', 'request': '测试请求数据'}
+预期结果： {'interface': {'pid': ['所选项目不存在!']}}
+实际结果： {'interface': {'pid': ['所选项目不存在!']}}
+===============执行结束===============
+
+test_testcases_6 (test05_testcases.TestTestcases)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>41</td>
+                    <td class="TestTestcases">TestTestcases</td>
+                    <td>test_testcases_7</td>
+                    <td>项目id和接口id不一致</td>
+                    <td>0.142s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>-------当前执行的用例是:项目id和接口id不一致----------
+请求参数： {'name': '勤学app用例2', 'interface': {'pid': 1, 'iid': 200}, 'author': '可优', 'request': '测试请求数据'}
+预期结果： {'interface': {'iid': ['所选接口不存在!']}}
+实际结果： {'interface': {'iid': ['所选接口不存在!']}}
+===============执行结束===============
+
+test_testcases_7 (test05_testcases.TestTestcases)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>42</td>
+                    <td class="TestTestcases">TestTestcases</td>
+                    <td>test_testcases_8</td>
+                    <td>用例名称重复</td>
+                    <td>0.157s</td>
+                    
+                        <td class="text-danger">失败</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>-------当前执行的用例是:用例名称重复----------
+请求参数： {'name': '勤学app用例2', 'interface': {'pid': 1, 'iid': 2}, 'author': '可优', 'request': '测试请求数据'}
+预期结果： {'name': ['具有 用例名称 的 用例信息 已存在。']}
+实际结果： {'id': 25, 'name': '勤学app用例2', 'interface': {'name': '注册接口_自动化测试平台项目', 'project': '自动化测试平台项目'}, 'author': '可优'}
+===============执行结束===============
+
+test_testcases_8 (test05_testcases.TestTestcases)执行——>【失败】
+</pre>
+                        
+
+                            <pre>Traceback (most recent call last):
+</pre>
+                        
+
+                            <pre>  File "D:\TestSoftware\python3.7.0\lib\unittest\case.py", line 59, in testPartExecutor
+    yield
+</pre>
+                        
+
+                            <pre>  File "D:\TestSoftware\python3.7.0\lib\unittest\case.py", line 615, in run
+    testMethod()
+</pre>
+                        
+
+                            <pre>  File "D:\py31\git_code\py31_project\cekai_api1\common\myddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+</pre>
+                        
+
+                            <pre>  File "D:\py31\git_code\py31_project\cekai_api1\testcase\test05_testcases.py", line 76, in test_testcases
+    raise e
+</pre>
+                        
+
+                            <pre>  File "D:\py31\git_code\py31_project\cekai_api1\testcase\test05_testcases.py", line 72, in test_testcases
+    assert_dict_item(expected, res)
+</pre>
+                        
+
+                            <pre>  File "D:\py31\git_code\py31_project\cekai_api1\tools\tools.py", line 20, in assert_dict_item
+    raise AssertionError("{} items not in {}".format(dic1, dic2))
+</pre>
+                        
+
+                            <pre>AssertionError: {'name': ['具有 用例名称 的 用例信息 已存在。']} items not in {'id': 25, 'name': '勤学app用例2', 'interface': {'name': '注册接口_自动化测试平台项目', 'project': '自动化测试平台项目'}, 'author': '可优'}
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+
+            </tbody>
+        </table>
+    </div>
+
+    <div style="height: 200px"></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+
+<script>
+    var tbodyTr = $('tbody tr');
+    var testResult = $("#testResult");
+    var testClass = $("#testClass");
+    <!--    用例执行详细信息显示切换-->
+    $(".btn_info").click(function () {
+        $(this).parent().parent().next().toggle();
+
+    });
+    // 当选择用例类之后触发
+    testClass.change(function () {
+        var cls = $(this).val();
+        var res = testResult.val();
+        elementDisplay(cls, res);
+        sort()
+    });
+    testResult.change(function () {
+        var res = $(this).val();
+        var cls = testClass.val();
+        elementDisplay(cls, res);
+        sort()
+    });
+
+    function elementDisplay(cls, res) {
+        // 用例数据的显示
+        if (cls === "所有") {
+            if (res === "所有") {
+                tbodyTr.has('button').show();
+            } else if (res === '成功') {
+                tbodyTr.hide();
+                tbodyTr.has('button').has('.text-success').show()
+
+            } else if (res === '失败') {
+                tbodyTr.hide();
+                tbodyTr.has('button').has('.text-danger').show()
+
+            } else if (res === '错误') {
+                tbodyTr.hide();
+                tbodyTr.has('button').has('.text-warning').show()
+
+            } else if (res === '跳过') {
+                tbodyTr.hide();
+                tbodyTr.has('button').has('.text-info').show()
+            }
+        } else {
+            if (res === "所有") {
+                tbodyTr.hide();
+                tbodyTr.has('button').has('.' + cls + '').show()
+            } else if (res === '成功') {
+                tbodyTr.hide();
+                tbodyTr.has('button').has('.' + cls + '').has('.text-success').show()
+            } else if (res === '失败') {
+                tbodyTr.hide();
+                tbodyTr.has('button').has('.' + cls + '').has('.text-danger').show()
+            } else if (res === '错误') {
+                tbodyTr.hide();
+                tbodyTr.has('button').has('.' + cls + '').has('.text-warning').show()
+            } else if (res === '跳过') {
+                tbodyTr.hide();
+                tbodyTr.has('button').has('.' + cls + '').has('.text-info').show()
+            }
+        }
+    }
+
+    function sort() {
+        //重新排列显示序号
+        // 选择所有可以见的tr
+        var visibleTr = tbodyTr.filter(":visible");
+
+        visibleTr.each(function (index, element) {
+            element.firstElementChild.innerHTML = index + 1;
+
+        })
+
+    }
+
+
+</script>
+
+<script type="text/javascript">
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('char'));
+    var myChart2 = echarts.init(document.getElementById('char2'));
+    // 指定图表的配置项和数据
+    option = {
+        color: ['#00a10a', '#ddb518', 'rgba(204,46,41,0.73)', '#85898c'],
+        tooltip: {
+            trigger: 'item',
+            formatter: '{a} <br/>{b}: {c} ({d}%)'
+        },
+        legend: {
+            orient: 'vertical',
+            left: 10,
+            data: ['通过', '失败', '错误', '跳过']
+        },
+        series: [
+            {
+                name: '测试结果',
+                type: 'pie',
+                radius: ['50%', '70%'],
+                avoidLabelOverlap: false,
+                label: {
+                    show: false,
+                    position: 'center'
+                },
+                emphasis: {
+                    label: {
+                        show: true,
+                        fontSize: '30',
+                        fontWeight: 'bold'
+                    }
+                },
+                labelLine: {
+                    show: false
+                },
+                data: [
+                    {value: 39, name: '通过'},
+                    {value: 3, name: '失败'},
+                    {value: 0, name: '错误'},
+                    {value: 0, name: '跳过'}
+                ]
+            }
+        ]
+    };
+    option2 = {
+        tooltip: {
+            formatter: '{a} <br/>{b} : {c}%'
+        },
+        toolbox: {
+            feature: {
+                restore: {},
+                saveAsImage: {}
+            }
+        },
+        series: [
+            {
+                name: '测试结果',
+                type: 'gauge',
+                detail: {formatter: '92.86%'},
+                data: [{value: '92.86', name: '用例通过率'}],
+                axisLine: {
+                    lineStyle: {
+                        color: [
+                            [0.2, '#c20000'],
+                            [0.8, '#ddb518'],
+                            [1, '#00a10a']]
+                    }
+                }
+            }
+        ]
+    };
+
+
+    myChart2.setOption(option2);
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+</script>
+
+
+</body>
+</html>
